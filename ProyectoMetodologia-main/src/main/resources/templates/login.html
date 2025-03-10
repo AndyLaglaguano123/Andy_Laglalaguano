@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Happy Market</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" th:href="@{/css/login/login.css}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" th:href="@{/img/login/favilogo.png}">
+
+    <!-- Estilos comunes -->
+    <link rel="stylesheet" th:href="@{/css/common/header.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Otros estilos específicos -->
+</head>
+<body>
+    <div th:replace="~{fragments/header :: header}"></div>
+    <!-- Resto del contenido -->
+
+    <!-- Login -->
+    <div class="login-container">
+        <img th:src="@{/img/index/logohm.jpg}" alt="Happy Market">
+        <h2>Inicia sesión/Regístrate</h2>
+        <form th:action="@{/auth/validar}" method="post">
+            <input type="email" name="email" placeholder="Dirección email o celular" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <a href="#" id="recover-password-link" class="forgot-password">Recuperar contraseña</a>
+            <button type="submit">Continuar</button>
+        </form>
+        <p class="signup">¿Eres nuevo en Happy Market? <a href="#" id="create-account">Crea tu cuenta en Happy Market</a></p>
+        <div class="social-login">
+            <button class="facebook">Facebook</button>
+            <button class="google">Google</button>
+        </div>
+    </div>
+
+    <!-- Agregar mensaje de alerta -->
+    <div th:if="${mensaje}" th:class="${'alert alert-' + tipoMensaje}" id="mensajeAlerta">
+        <span th:text="${mensaje}"></span>
+        <button type="button" class="close-alert" onclick="this.parentElement.style.display='none'">×</button>
+    </div>
+
+<!-- Modal de registro -->
+<div id="registerModal" class="modal">
+    <div class="modal-content">
+        <!-- Botón para volver al inicio -->
+        <button id="back-to-login" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Volver
+        </button>
+
+        <h2>Crear Cuenta</h2>
+        <img th:src="@{/img/index/logohm.jpg}" alt="Happy Market">
+        
+        <form th:action="@{/auth/registrar}" method="post" id="registerForm">
+            <input type="text" name="nombre" placeholder="Nombre Completo" required>
+            <input type="email" name="email" placeholder="Dirección de Correo" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <input type="password" name="confirmarPassword" placeholder="Repetir Contraseña" required>
+            
+            <div class="checkbox-group">
+                <input type="checkbox" id="terms" required>
+                <label for="terms">Acepto los términos y condiciones</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="notifications" name="aceptaNotificaciones">
+                <label for="notifications">Deseo recibir notificaciones de productos nuevos</label>
+            </div>
+            <button type="submit" class="btn-primary">Crear Cuenta</button>
+        </form>
+
+        <!-- Enlace para iniciar sesión si ya tienes cuenta -->
+        <p class="login-link">¿Ya tienes cuenta? <a href="#" id="login-link">Iniciar sesión</a></p>
+    </div>
+</div>
+
+<!-- Modal de Recuperar Contraseña -->
+<div id="recoverPasswordModal" class="modal" style="display: none;">
+  <div class="modal-content">
+      <h2>Recuperar Contraseña</h2>
+      <input type="email" placeholder="Correo electrónico o número de teléfono" required>
+      <button>Enviar enlace de recuperación</button>
+      
+      <p style="text-align: center; margin-top: 20px;">
+          <!-- Enlace de redirección al login -->
+          <a href="login.html" id="back-to-login" style="color: #007bff; text-decoration: none;">Volver al inicio de sesión</a>
+      </p>
+  </div>
+</div>
+
+    <!-- Scripts -->
+    <script th:src="@{/js/login/login.js}"></script>
+</body>
+</html>

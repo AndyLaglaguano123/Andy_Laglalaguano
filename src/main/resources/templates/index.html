@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Market</title>
+    <link rel="stylesheet" th:href="@{/css/index/index.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/png" th:href="@{/img/index/favilogo.png}">
+    <script src="https://unpkg.com/iconLib@latest"></script>
+    <link rel="stylesheet" th:href="@{/css/common/header.css}">
+</head>
+
+<body>
+        <div th:replace="~{fragments/header :: header}"></div>
+
+    <div class="hero-banner">
+        <div class="container banner-content">
+            <div class="banner-text">
+                <span class="offer-tag">Oferta Especial</span>
+                <h1>COMPRA ONLINE</h1>
+                <p>Descubre ofertas increíbles con hasta 70% de descuento en tus productos favoritos. ¡Compra ahora y ahorra!</p>
+                <button class="btn btn-primary">Comprar Ahora</button>
+            </div>
+            <div class="banner-image">
+                <!-- Utilizando Thymeleaf para la imagen -->
+                <img th:src="@{/img/index/favilogo.png}" alt="Shopping">
+            </div>
+        </div>
+    </div>
+    <main class="container main-content">
+        <div id="products-container" class="products-grid">
+            <!-- Las tarjetas de productos se cargarán aquí dinámicamente -->
+        </div>
+    </main>
+    <main class="container main-content">
+        <!-- Sección Productos Destacados -->
+        <section class="products-section">
+            <h2>Productos Destacados</h2>
+            <div id="featuredProductsContainer" class="products-grid">
+                <!-- Tarjetitas generadas dinámicamente con JavaScript -->
+            </div>
+        </section>
+
+        <!-- Sección Productos en Oferta -->
+        <section class="products-section">
+            <h2>Productos en Oferta</h2>
+            <div id="offerProductsContainer" class="products-grid">
+                <!-- Tarjetitas generadas dinámicamente con JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div>
+            <i class="fas fa-shipping-fast"></i>
+            <p>ENTREGA GRATUITA Y RÁPIDA</p>
+            <p>Envío gratuito para todos los pedidos superiores a $100</p>
+        </div>
+        <div>
+            <i class="fas fa-headset"></i>
+            <p>SERVICIO DE ATENCIÓN AL CLIENTE 24/7</p>
+            <p>Atención al cliente las 24 horas, los 7 días de la semana</p>
+        </div>
+        <div>
+            <i class="fas fa-undo"></i>
+            <p>GARANTÍA DE DEVOLUCIÓN DE DINERO</p>
+            <p>Reembolsos en 30 días</p>
+        </div>
+    </div>
+
+    <!-- Se carga el archivo JavaScript externo -->
+    <script th:src="@{/js/carrito/carritoStorage.js}"></script>
+    <script th:src="@{/js/carrito/carrito.js}"></script>
+    <script th:src="@{/js/index/index.js}"></script>
+</body>
+
+</html>

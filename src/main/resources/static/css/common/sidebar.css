@@ -1,0 +1,81 @@
+/* Estilos del Sidebar */
+.sidebar {
+    width: 250px;
+    height: calc(100vh - 60px); /* Ajustado para dar espacio al margen */
+    position: fixed;
+    left: 1; /* Quitamos el margen izquierdo */
+    top: 100px; /* Se alinea justo debajo del header */
+    background-color: #ffffff;
+    border-radius: 0; /* Quitamos el border radius */
+    padding: 0.75rem 0.5rem; /* Reducido de 1.5rem 1rem */
+    transition: all 0.3s ease;
+    z-index: 90; /* Reducimos el z-index para que esté detrás del header */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem; /* Aumentado ligeramente para mejor espaciado */
+    gap: 0.5rem;
+    border: 1px solid #e0e0e0; /* Borde gris claro */
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: #ffffff; /* Asegura fondo blanco */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0.75rem; /* Reducido de 0.75rem 1rem */
+    color: #333;
+    text-decoration: none;
+    border-radius: 6px; /* Reducido de 8px */
+    transition: all 0.2s ease;
+    gap: 0.75rem; /* Reducido de 1rem */
+    border: 1px solid transparent;
+}
+
+.sidebar-link:hover {
+    background-color: #f8f9fa;
+    border: 1px solid #333;
+}
+
+.sidebar-link.active {
+    background-color: #f8f9fa;
+    font-weight: 500;
+    border: 1px solid #333;
+}
+
+.sidebar-link i {
+    width: 16px; /* Reducido de 20px */
+    font-size: 1rem; /* Reducido de 1.1rem */
+    color: #333;
+    text-align: center;
+}
+
+.sidebar-link span {
+    font-size: 0.9rem; /* Reducido de 0.95rem */
+    font-weight: 500;
+    color: #333;
+}
+
+/* Separador para la sección de logout */
+.sidebar-link[href="/auth/logout"] {
+    margin-top: auto;
+    border-top: 1px solid #333;
+    padding-top: 1rem;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+    .sidebar {
+        left: -250px; /* Lo ocultamos completamente */
+        border-radius: 0 12px 12px 0;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .sidebar.active {
+        left: 0;
+    }
+}

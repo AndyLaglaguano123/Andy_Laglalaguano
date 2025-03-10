@@ -1,0 +1,254 @@
+/* Estilos del Header */
+.header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1400px; /* Mismo ancho que en index.css */
+    margin: 0 auto;
+    padding: 0.5rem 2rem;
+}
+
+.header-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    height: 60px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-img {
+    height: 40px;
+}
+
+.search-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    max-width: 800px;
+}
+
+.country-selector {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.country-selector i {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.country-select {
+    appearance: none;
+    background: transparent;
+    border: none;
+    padding: 0.5rem 2rem 0.5rem 0.5rem;
+    font-size: 0.9rem;
+    color: #333;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+}
+
+.country-select option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.country-select option img {
+    width: 20px;
+    height: 15px;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+.country-select:hover {
+    background-color: #f3f4f6;
+    border-radius: 4px;
+}
+
+.country-select:focus {
+    outline: none;
+    background-color: #f3f4f6;
+    border-radius: 4px;
+}
+
+.custom-select {
+    position: relative;
+    cursor: pointer;
+    z-index: 1001; /* Asegurar que está por encima de otros elementos */
+}
+
+.select-trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: white;
+    border-radius: 4px;
+    min-width: 150px;
+}
+
+.select-trigger:hover {
+    background-color: #f3f4f6;
+}
+
+.flag-icon {
+    width: 20px;
+    height: 15px;
+    object-fit: contain;
+}
+
+.select-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1002; /* Mayor que el padre */
+    width: 200px;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 4px;
+}
+
+.custom-select.active .select-options {
+    display: block !important; /* Forzar visualización */
+}
+
+.select-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.select-option:hover {
+    background-color: #f3f4f6;
+}
+
+.search-bar {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 25px;
+    padding: 0.5rem;
+}
+
+.search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 0.25rem 1rem;
+    font-size: 0.9rem;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    color: #666;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.user-icon, 
+.cart-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #333;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.user-icon:hover,
+.cart-button:hover {
+    background-color: #f3f4f6;
+}
+
+.cart-count {
+    background-color: #3b82f6;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+}
+
+.main-nav {
+    display: flex;
+    gap: 2rem;
+    padding: 0.5rem 0;
+    border-top: 1px solid #e5e7eb;
+}
+
+.main-nav a {
+    color: #374151;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.main-nav a:hover {
+    color: #3b82f6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0.5rem 1rem;
+    }
+
+    .header-main {
+        flex-wrap: wrap;
+    }
+
+    .search-container {
+        order: 3;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .main-nav {
+        overflow-x: auto;
+        padding: 0.5rem;
+        gap: 1rem;
+    }
+
+    .country-select {
+        font-size: 0.8rem;
+        padding: 0.4rem 1.5rem 0.4rem 0.4rem;
+    }
+}
