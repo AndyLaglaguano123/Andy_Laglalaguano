@@ -1,0 +1,33 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-espe}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-espe}
+      POSTGRES_DB: ${POSTGRES_DB:-ATW}
+    volumes:
+      - ./postgres_data/pgdata:/var/lib/postgresql/data
+    networks:
+      - admin-enlaces-network
+    restart: unless-stopped
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-espe@mail.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-espe}
+    networks:
+      - admin-enlaces-network
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+networks:
+  admin-enlaces-network:
+    driver: bridge
